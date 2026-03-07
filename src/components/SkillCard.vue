@@ -1,30 +1,48 @@
 <template>
-  <section class="fade-in">
-    <h2>Compétences</h2>
-
-    <ul class="skills">
-      <li>JavaScript (ES6+)</li>
-      <li>Docker</li>
-      <li>Vue.js 3</li>
-      <li>Node.js / Express</li>
-      <li>PostgreSQL / Sequelize / MongoDB</li>
-      <li>Architecture MVC</li>
-      <li>Design Patterns</li>
-    </ul>
-  </section>
+  <div class="skill-card glass-card">
+    <div class="skill-icon">
+      <slot name="icon"></slot>
+    </div>
+    <h4>{{ title }}</h4>
+    <p>{{ description }}</p>
+  </div>
 </template>
 
+<script setup>
+defineProps({
+  title: String,
+  description: String
+})
+</script>
+
 <style scoped>
-.skills {
-  margin-top: 20px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 10px;
+.skill-card {
+  padding: 24px;
+  text-align: center;
+  transition: all var(--transition-normal);
 }
 
-li {
-  background: #1e1e1e;
-  padding: 12px;
-  border-radius: 8px;
+.skill-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary);
+}
+
+.skill-icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+  color: var(--primary);
+}
+
+.skill-card h4 {
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+.skill-card p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0;
 }
 </style>
+
